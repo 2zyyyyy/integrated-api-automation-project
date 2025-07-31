@@ -12,26 +12,7 @@ class BaseAPI:
         self.crypto = CryptoUtils()
         self.session = requests.Session()  # 保持会话
 
-    def _log_request(self, method, url, params=None, data=None, json=None, headers=None):
-        """记录请求信息"""
-        log_data = {
-            "method": method,
-            "url": url,
-            "params": params,
-            "headers": headers or self.headers
-        }
-        
-        # 处理敏感数据脱敏
-        if json:
-            log_json = json.copy()
-            if "password" in log_json:
-                log_json["password"] = "***"
-            log_data["json"] = log_json
-        elif data:
-            log_data["data"] = data
-        
-        logger.debug(f"发送请求：{json.dumps(log_data, ensure_ascii=False)}")
-
+    @staticmethod
     def _log_response(self, response):
         """记录响应信息"""
         try:
@@ -49,6 +30,26 @@ class BaseAPI:
                 f"响应时间={response.elapsed.total_seconds():.3f}s, "
                 f"内容={response.text[:500]}..."  # 截断长文本
             )
+
+    def _log_request(self, method, url, params=None, data=None, json=None, headers=None):
+        """记录请求信息"""
+        log_data = {
+            "method": method,
+            "url": url,
+            "params": params,
+            "headers": headers or self.headers
+        }
+
+        # 处理敏感数据脱敏
+        if json:
+            log_json = json.copy()
+            if "password" in log_json:
+                log_json["password"] = "***"
+            log_data["json"] = log_json
+        elif data:
+            log_data["data"] = data
+
+        logger.debug(f"发送请求：{json.dumps(log_data, ensure_ascii=False)}")
 
     def request(self, method, url, **kwargs):
         """通用请求方法，带日志记录和加解密"""

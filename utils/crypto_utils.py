@@ -138,3 +138,6 @@ class CryptoUtils:
         except (ValueError, TypeError, Exception) as e:
             logger.warning(f"签名验证失败: {str(e)}")
             return False
+
+    def get_timestamp(self):
+        pass
