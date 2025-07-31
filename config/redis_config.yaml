@@ -1,0 +1,13 @@
+test:
+  host: "test-redis.example.com"
+  port: 6379
+  password_key: "REDIS_TEST_PASSWORD"
+  db: 0
+  decode_responses: true
+
+staging:
+  host: "staging-redis.example.com"
+  port: 6379
+  password_key: "REDIS_STAGING_PASSWORD"
+  db: 0
+  decode_responses: true

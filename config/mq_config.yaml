@@ -1,0 +1,13 @@
+test:
+  host: "test-mq.example.com"
+  port: 5672
+  user: "test_mq_user"
+  password_key: "MQ_TEST_PASSWORD"
+  virtual_host: "/"
+
+staging:
+  host: "staging-mq.example.com"
+  port: 5672
+  user: "staging_mq_user"
+  password_key: "MQ_STAGING_PASSWORD"
+  virtual_host: "/"

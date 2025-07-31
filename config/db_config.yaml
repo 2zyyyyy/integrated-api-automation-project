@@ -1,0 +1,15 @@
+test:
+  host: "test-db.example.com"
+  port: 3306
+  user: "test_user"
+  password_key: "DB_TEST_PASSWORD"
+  database: "test_db"
+  charset: "utf8mb4"
+
+staging:
+  host: "staging-db.example.com"
+  port: 3306
+  user: "staging_user"
+  password_key: "DB_STAGING_PASSWORD"
+  database: "staging_db"
+  charset: "utf8mb4"
